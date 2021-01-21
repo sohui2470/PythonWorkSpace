@@ -86,6 +86,7 @@ f.close()
 f = open('abc.txt', 'r')
 content = f.readlines()
 f.close()
+
 content.reverse()
 new=[]
 for i in content:
@@ -120,7 +121,7 @@ f = open('sample.txt', 'r')
 line = f.readlines()
 f.close()
 
-n =[]
+n = []
 for i in line:
     n.append(i.replace('\n', ''))
 intlist = list(map(int, n))
@@ -170,7 +171,9 @@ print(cal2.sum())
 print(cal2.avg())
 
 # Q11 모듈 사용 방법
-# 명령 프롬프트의 import 목록에 c:\doit을 추가한다
+# 1. import sys, sys.path.append로 디렉토리 추가
+# 2. pythonpath 환경 변수에 디렉토리 저장
+# 3. cd directory(python shell을 현재 디렉토리로 이동해 실행)
 
 # Q12 오류와 예외 처리(주관식)
 # 7
@@ -263,7 +266,23 @@ print(DuplicateNum(input()))
 # copy input() from here>> 0123456789 01234 01234567890 6789012345 012322456789
 
 # Q16 모스 부호 해독
+dic = {
+    '.-':'A','-...':'B','-.-.':'C','-..':'D','.':'E','..-.':'F',
+    '--.':'G','....':'H','..':'I','.---':'J','-.-':'K','.-..':'L',
+    '--':'M','-.':'N','---':'O','.--.':'P','--.-':'Q','.-.':'R',
+    '...':'S','-':'T','..-':'U','...-':'V','.--':'W','-..-':'X',
+    '-.--':'Y','--..':'Z'
+}
 
+def morse(src):
+    result = []
+    for word in src.split("  "):
+        for char in word.split(" "):
+            result.append(dic[char])
+        result.append(" ")
+    return "".join(result)
+
+print(morse('.... .  ... .-.. . . .--. ...  . .- .-. .-.. -.--'))
 
 # Q17 기초 메타 문자 (객관식)
 # 2
@@ -289,4 +308,3 @@ import re
 p = re.compile(r".*[@].*[.](?=^com$|^net$).*$")
 m = p.search(email)
 print(m)
-
